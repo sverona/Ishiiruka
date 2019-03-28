@@ -345,7 +345,9 @@ void AVIDump::AddFrame(const u8* data, int width, int height, int stride, const 
 	if (!error && got_packet)
 	{
 		WritePacket(pkt);
-	}
+	} else {
+        WARN_LOG(VIDEO, "Failed to write frame %d", state.savestate_index);
+    }
 	if (error)
 		ERROR_LOG(VIDEO, "Error while encoding video: %d", error);
 }
